@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.example.vazco.curso.entities.Category;
 import com.example.vazco.curso.entities.Order;
 import com.example.vazco.curso.entities.OrderItem;
+import com.example.vazco.curso.entities.Payment;
 import com.example.vazco.curso.entities.Product;
 import com.example.vazco.curso.entities.User;
 import com.example.vazco.curso.entities.enums.OrderStatus;
@@ -76,6 +77,9 @@ public class TestConfig implements CommandLineRunner {
 		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 		orderItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 		
+		Payment payo1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+		o1.setPayment(payo1);
+		orderRepository.save(o1);
 
 	}
 
